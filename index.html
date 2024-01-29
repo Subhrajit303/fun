@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Link to Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Stylish&display=swap" rel="stylesheet">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        body {
+            font-family: 'Stylish', serif;
+            background-color: pink;
+            height: 600px;
+        }
+
+        .cute-gif {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .btn-group {
+            width: 100%;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+
+
+        button {
+            position: absolute;
+            width: 150px;
+            height: inherit;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            border-radius: 30px;
+            border: 2px solid pink;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+        }
+
+        button:nth-child(1) {
+            margin-left: -200px;
+            background: pink;
+        }
+
+        button:nth-child(2) {
+            margin-right: -200px;
+            color: pink;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="wrapper d-flex justify-content-center align-items-center" style="height: 100vh;">
+        <div class="container text-center">
+            <div class="cute-gif">
+                <img id="cuteGif" src="./output-onlinegiftools.gif" alt="Cute GIF 1">
+            </div>
+            <h2 id="dateText">Want to go for a Date with me</h2>
+            <div class="btn-group">
+                <button id="yesButton" class="yes-btn" onclick="changeGif()">YES</button>
+                <button class="no-btn" onmouseover="moveButton()" id="noButton">NO</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+    <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+    <script>
+        function changeGif() {
+            document.getElementById("cuteGif").src = "./output-onlinegiftools copy.gif";
+
+            document.getElementById("dateText").innerText = "That's wonderful! Let's plan something insteresting!";
+
+
+            document.getElementById("yesButton").style.display = "none";
+            document.getElementById("noButton").style.display = "none";
+        }
+
+        function moveButton() {
+            const wrapperRect = document.body.getBoundingClientRect();
+            const noBtn = document.querySelector('.no-btn');
+            const noBtnRect = noBtn.getBoundingClientRect();
+
+            const maxWidth = wrapperRect.width - noBtnRect.width;
+            const maxHeight = wrapperRect.height - noBtnRect.height;
+
+            const i = Math.floor(Math.random() * maxWidth) + 1;
+            const j = Math.floor(Math.random() * maxHeight) + 1;
+
+            noBtn.style.left = i + 'px';
+            noBtn.style.top = j + 'px';
+        }
+    </script>
+</body>
+
+</html>
